@@ -8,7 +8,7 @@ Projekt polega na stworzeniu inteligentnego czujnika jakości powietrza, który 
 
 Projekt składa się z kilku głównych komponentów:
 
-- **Urządzenie IoT (Symulator danych Python)** – zbiera dane z czujników jakości powietrza.
+- **Urządzenie IoT (Symulator danych Python)** – symuluje dane czujników jakości powietrza.
 - **Chmura (Azure IoT Hub, Azure Blob Storage, Azure Functions)** – odbiera dane, przechowuje je i analizuje.
 - **Backend (REST API)** – pozwala na komunikację z chmurą i użytkownikami.
 
