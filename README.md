@@ -11,7 +11,6 @@ Projekt składa się z kilku głównych komponentów:
 - **Urządzenie IoT (ESP32/Raspberry Pi)** – zbiera dane z czujników jakości powietrza.
 - **Chmura (Azure IoT Hub, Azure Blob Storage, Azure Functions)** – odbiera dane, przechowuje je i analizuje.
 - **Backend (REST API)** – pozwala na komunikację z chmurą i użytkownikami.
-- **Frontend (opcjonalnie)** – pozwala użytkownikowi na monitorowanie jakości powietrza w czasie rzeczywistym.
 
 ## Technologie
 
@@ -19,7 +18,6 @@ Projekt składa się z kilku głównych komponentów:
 - **Python**: Do tworzenia symulatora urządzenia IoT
 - **FastAPI/Node.js**: Backend API
 - **MQTT/HTTP**: Protokół komunikacji między urządzeniem a chmurą
-- **React.js/Vue.js** (opcjonalnie): Frontend do wizualizacji danych
 
 ## Instalacja
 
