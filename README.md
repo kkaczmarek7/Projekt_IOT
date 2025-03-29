@@ -21,10 +21,6 @@ Projekt składa się z kilku głównych komponentów:
 - **MQTT/HTTP**: Protokół komunikacji między urządzeniem a chmurą
 - **React.js/Vue.js** (opcjonalnie): Frontend do wizualizacji danych
 
-## Instalacja
 
-### 1. Klonowanie repozytorium
-Skopiuj repozytorium na swoje lokalne środowisko:
-```bash
-git clone https://github.com/twoje-repozytorium.git
-cd twoje-repozytorium
+
+
