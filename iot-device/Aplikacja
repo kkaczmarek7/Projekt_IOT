@@ -24,16 +24,16 @@ print("Monitorowanie wilgotności i temperatury powietrza")
 
 while True:
     # Wartości rosnące i malejące
-    temperature += round(random.uniform(-0.2, 0.2), 1)  # Zmiana o max ±0.5°C
+    temperature += round(random.uniform(-0.2, 0.2), 1)  # Zmiana o max ±0.2°C
     humidity += round(random.uniform(-2.0, 2.0), 1)     # Zmiana o max ±2%
-    dustPM25 += round(random.uniform(-4.0, 2.0), 1)     # Zmiana o max ±1 ug/m3
-    dustPM10 += round(random.uniform(-4.0, 4.0), 1)     # Zmiana o max ±2 ug/m3
+    dustPM25 += round(random.uniform(-3.0, 3.0), 1)     # Zmiana o max ±3 ug/m3
+    dustPM10 += round(random.uniform(-4.0, 4.0), 1)     # Zmiana o max ±4 ug/m3
 
     # Wartości min i max
-    temperature = max(-30.0, min(temperature, 35.0))   # Temperatura w zakresie od -30 do 35°C
-    humidity = max(10.0, min(humidity, 99.0))          # Wilgotność w zakresie od 10% do 99%
-    dustPM25 = max(0.0, min(dustPM25,300))             # Pył PM2.5 nie może być poniżej 0
-    dustPM10 = max(0.0, min(dustPM10,400))             # Pył PM10 nie może być poniżej 
+    temperature = max(-30.0, min(temperature, 35.0))   
+    humidity = max(10.0, min(humidity, 99.0))          
+    dustPM25 = max(0.0, min(dustPM25,300))             
+    dustPM10 = max(0.0, min(dustPM10,400))            
 
     # Jakość powietrza
     jakosc_powietrza = ocen_jakosc_powietrza(dustPM10)
