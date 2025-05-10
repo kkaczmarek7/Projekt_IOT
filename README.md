@@ -1,5 +1,7 @@
 # Inteligentny Czujnik Jakości Powietrza dla Smart Home
 
+LINK do działającego projektu [https://fastapi-backend-e3f7b9.azurewebsites.net/docs#/](url)
+
 ## Opis projektu
 
 Projekt polega na stworzeniu inteligentnego czujnika jakości powietrza, który monitoruje poziom zanieczyszczeń (PM2.5, PM10), temperaturę i wilgotność w pomieszczeniu. Dane są przesyłane do chmury (Azure), gdzie są przechowywane, analizowane, a użytkownik otrzymuje powiadomienia oraz ma dostęp do historii pomiarów.
