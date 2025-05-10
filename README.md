@@ -1,6 +1,6 @@
 # Inteligentny Czujnik Jakości Powietrza dla Smart Home
 
-LINK do działającego projektu [https://fastapi-backend-e3f7b9.azurewebsites.net/docs#/](url)
+LINK do działającego projektu https://fastapi-backend-e3f7b9.azurewebsites.net/docs#/
 
 ## Opis projektu
 
