@@ -1,30 +1,26 @@
-# Inteligentny Czujnik Jakości Powietrza dla Smart Home
+# Czujnik jakości powietrza – Smart Home
 
-LINK do działającego projektu https://fastapi-backend-e3f7b9.azurewebsites.net/docs#/
+Projekt demonstracyjny systemu IoT, który symuluje działanie czujnika jakości powietrza w środowisku inteligentnego domu. Wykorzystuje chmurowe usługi Microsoft Azure do przesyłania, przechowywania i analizy danych. Umożliwia wizualizację pomiarów w Power BI.
 
-## Opis projektu
+---
 
-Projekt polega na stworzeniu inteligentnego czujnika jakości powietrza, który monitoruje poziom zanieczyszczeń (PM2.5, PM10), temperaturę i wilgotność w pomieszczeniu. Dane są przesyłane do chmury (Azure), gdzie są przechowywane, analizowane, a użytkownik otrzymuje powiadomienia oraz ma dostęp do historii pomiarów.
+## Zawartość projektu
 
-## Architektura
+- `azure_iot.py` – skrypt symulujący czujnik i wysyłający dane do Azure IoT Hub
+- Obsługa danych środowiskowych: temperatura, wilgotnoś.
+- Integracja z:
+  - **Azure IoT Hub** – do komunikacji z urządzeniem
+  - **Azure Cosmos DB** – do trwałego przechowywania danych
+  - **Power BI** – do wizualizacji pomiarów
 
-Projekt składa się z kilku głównych komponentów:
+---
 
-- **Urządzenie IoT (Symulator danych Python)** – symuluje dane czujników jakości powietrza.
-- **Chmura (Azure IoT Hub, Azure Blob Storage, Azure Functions)** – odbiera dane, przechowuje je i analizuje.
-- **Backend (REST API)** – pozwala na komunikację z chmurą i użytkownikami.
+## Wymagania
 
-## Technologie
-
-- **Azure**: IoT Hub, Blob Storage, Functions
-- **Python**: Do tworzenia symulatora urządzenia IoT
-- **FastAPI/Node.js**: Backend API
-- **MQTT/HTTP**: Protokół komunikacji między urządzeniem a chmurą
-
-## Instalacja
-
-### 1. Klonowanie repozytorium
-Skopiuj repozytorium na swoje lokalne środowisko:
-```bash
-git clone https://github.com/kkaczmarek7/Projekt_IOT
-cd Projekt_IOT
+- Python 3.7+
+- Konto w Microsoft Azure
+- Skonfigurowane:
+  - Azure IoT Hub z urządzeniem `simulated-device`
+  - Azure Cosmos DB z bazą `iotdata` i kontenerem `sensordata`
+  - Routing wiadomości z IoT Hub do Cosmos DB
+- Power BI Desktop do wizualiacji danych.
