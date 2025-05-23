@@ -1,45 +1,38 @@
-import random
 import time
+import random
+import json
+from azure.iot.device import IoTHubDeviceClient, Message
 
-# definicja wartosci
-def ocen_jakosc_powietrza(pm10):
-    if pm10 <= 13:
-        return "Bardzo dobra"
-    elif pm10 <= 35:
-        return "Dobra"
-    elif pm10 <= 75:
-        return "Średnia"
-    elif pm10 <= 150:
-        return "Zła"
-    else:
-        return "Bardzo zła"
+# Wklej swój connection string tutaj
+CONNECTION_STRING = "HostName=myiothubbb.azure-devices.net;DeviceId=simulated-device;SharedAccessKey=HdypidSiW7bWCxHuwrSEz0kYFByDlquSFPPo3PFqQtk="
 
-# Losowanie wartosci
-temperature = round(random.uniform(-30.0, 35.0), 1)
-humidity = round(random.uniform(10.0, 99.0), 1)
-dustPM25 = round(random.uniform(0.0, 200.0), 1)
-dustPM10 = round(random.uniform(0.0, 300.0), 1)
+def simulate_sensor_data():
+    temperature = round(random.uniform(20.0, 30.0), 2)
+    humidity = round(random.uniform(30.0, 60.0), 2)
+    return {
+        "deviceId": "simulated-device",
+        "temperature": temperature,
+        "humidity": humidity,
+        "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    }
 
-print("Monitorowanie wilgotności i temperatury powietrza")
+def main():
+    print("Łączenie z IoT Hub...")
+    client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
 
-while True:
-    # Wartości rosnące i malejące
-    temperature += round(random.uniform(-0.2, 0.2), 1)  # Zmiana o max ±0.2°C
-    humidity += round(random.uniform(-2.0, 2.0), 1)     # Zmiana o max ±2%
-    dustPM25 += round(random.uniform(-3.0, 3.0), 1)     # Zmiana o max ±3 ug/m3
-    dustPM10 += round(random.uniform(-4.0, 4.0), 1)     # Zmiana o max ±4 ug/m3
+    try:
+        while True:
+            data = simulate_sensor_data()
+            message = Message(json.dumps(data))
+            message.content_encoding = "utf-8"
+            message.content_type = "application/json"
+            client.send_message(message)
+            print(f"Wysłano: {data}")
+            time.sleep(15)
+    except KeyboardInterrupt:
+        print("Zatrzymano symulator")
+    finally:
+        client.shutdown()
 
-    # Wartości min i max
-    temperature = max(-30.0, min(temperature, 35.0))   
-    humidity = max(10.0, min(humidity, 99.0))          
-    dustPM25 = max(0.0, min(dustPM25,300))             
-    dustPM10 = max(0.0, min(dustPM10,400))            
-
-    # Jakość powietrza
-    jakosc_powietrza = ocen_jakosc_powietrza(dustPM10)
-
-    # Wynik
-    print(f"Temperatura: {temperature:.1f}°C  Wilgotność: {humidity:.1f}% Pył_PM_2.5: {dustPM25:.1f}ug/m3 Pył_PM_10: {dustPM10:.1f}ug/m3 Jakość powietrza: {jakosc_powietrza}")
-    
-    time.sleep(2)  # Odczyt co 2 sekundy
-
+if __name__ == "__main__":
+    main()
